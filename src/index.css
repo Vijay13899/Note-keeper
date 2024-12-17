@@ -1,0 +1,12 @@
+body {
+    font-family: 'Roboto', sans-serif; /* Use Google Fonts: Roboto */
+    background-color: #f8f9fa; /* Light gray background */
+    color: #343a40; /* Dark gray text */
+}
+h1, h2, h3, h4 {
+    font-family: 'Poppins', sans-serif; /* Use Poppins for headings */
+}
+.btn-primary:hover {
+    background-color: #0a58ca; /* Slightly darker blue */
+    color: #fff;
+}
