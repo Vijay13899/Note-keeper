@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom"
 import CreatableReactSelect from "react-select/creatable"
 import { NoteData, Tag } from "./App"
 import { v4 as uuidV4 } from "uuid"
+import MDEditor from "@uiw/react-md-editor"
+
 
 type NoteFormProps = {
   onSubmit: (data: NoteData) => void
@@ -16,11 +18,10 @@ export function NoteForm({
                            onAddTag,
                            availableTags,
                            title = "",
-                           markdown = "",
                            tags = [],
                          }: NoteFormProps) {
   const titleRef = useRef<HTMLInputElement>(null)
-  const markdownRef = useRef<HTMLTextAreaElement>(null)
+  const [markdown,setMarkdown] = useState("");
   const [selectedTags, setSelectedTags] = useState<Tag[]>(tags)
   const navigate = useNavigate()
 
@@ -29,7 +30,7 @@ export function NoteForm({
 
     onSubmit({
       title: titleRef.current!.value,
-      markdown: markdownRef.current!.value,
+      markdown:markdown,
       tags: selectedTags,
     })
 
@@ -86,15 +87,26 @@ export function NoteForm({
                 </Row>
                 <Form.Group controlId="markdown" className="mb-4">
                   <Form.Label className="text-secondary fw-semibold">Body</Form.Label>
-                  <Form.Control
-                      defaultValue={markdown}
-                      required
-                      as="textarea"
-                      ref={markdownRef}
-                      rows={15}
-                      placeholder="Enter your note content"
-                      className="border-primary"
-                  />
+                  {/*<Form.Control*/}
+                  {/*    defaultValue={markdown}*/}
+                  {/*    required*/}
+                  {/*    as="textarea"*/}
+                  {/*    ref={markdownRef}*/}
+                  {/*    rows={15}*/}
+                  {/*    placeholder="Enter your note content"*/}
+                  {/*    className="border-primary"*/}
+                  {/*/>*/}
+                    <MDEditor
+                        value={markdown}
+                        onChange={(value) => setMarkdown(value as string)}
+                        id="notes"
+                        preview="edit"
+                        height={300}
+                        style={{ borderRadius: 20, overflow: "hidden" }}
+                        previewOptions={{
+                            disallowedElements: ["style"],
+                        }}
+                    />
                 </Form.Group>
                 <Stack direction="horizontal" gap={2} className="mt-3 justify-content-end">
                   <Button type="submit" variant="primary" className="px-4 me-2">

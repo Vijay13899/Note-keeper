@@ -3,10 +3,17 @@ body {
     background-color: #f8f9fa; /* Light gray background */
     color: #343a40; /* Dark gray text */
 }
+
 h1, h2, h3, h4 {
     font-family: 'Poppins', sans-serif; /* Use Poppins for headings */
 }
 .btn-primary:hover {
     background-color: #0a58ca; /* Slightly darker blue */
     color: #fff;
+}
+.markdown-content img {
+    max-width: 100%; /* Ensures the image doesn’t overflow */
+    height: auto;    /* Maintains aspect ratio */
+    border-radius: 8px; /* Optional: Adds rounded corners */
+    margin: 10px 0;  /* Optional: Adds spacing around the image */
 }

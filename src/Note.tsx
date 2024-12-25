@@ -2,6 +2,8 @@ import { Badge, Button, Card, Col, Row, Stack } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useNote } from "./NoteLayout";
 import ReactMarkdown from "react-markdown";
+import PDFDocument from "./PDFDocument";
+import {PDFDownloadLink} from "@react-pdf/renderer";
 
 type NoteProps = {
   onDelete: (id: string) => void;
@@ -16,12 +18,12 @@ export function Note({ onDelete }: NoteProps) {
         {/* Header Section */}
         <Row className="align-items-center mb-4">
           <Col>
-            <h1 className="text-primary fw-bold">{note.title}</h1>
+            <h1 className="fw-bold">{note.title}</h1>
             {note.tags.length > 0 && (
                 <Stack gap={1} direction="horizontal" className="flex-wrap">
                   {note.tags.map((tag) => (
                       <Badge
-                          className="text-truncate bg-info text-white px-2 py-1"
+                          className="bg-success text-white me-2 text-truncate fs-6 p-2"
                           key={tag.id}
                       >
                         {tag.label}
@@ -37,6 +39,13 @@ export function Note({ onDelete }: NoteProps) {
                   Edit
                 </Button>
               </Link>
+                <PDFDownloadLink
+                    document={<PDFDocument markdown={note.markdown} />}
+                    fileName={`${note.title}.pdf`}
+                    className="btn btn-primary"
+                >
+                    Download as PDF
+                </PDFDownloadLink>
               <Button
                   onClick={() => {
                     onDelete(note.id);

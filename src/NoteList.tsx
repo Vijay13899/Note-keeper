@@ -62,7 +62,7 @@ export function NoteList({
     <>
       <Row className="align-items-center mb-4">
         <Col>
-          <h1>Notes</h1>
+          <h2>Notes</h2>
         </Col>
         <Col xs="auto">
           <Stack gap={2} direction="horizontal">
@@ -136,14 +136,14 @@ function NoteCard({ id, title, tags }: SimplifiedNote) {
     <Card
       as={Link}
       to={`/${id}`}
-      className={`h-100 text-reset text-decoration-none ${styles.card} mb-4 shadow-lg border-0 rounded-4 bg-gradient`}
+      className={`h-100 text-reset text-decoration-none ${styles.card} mb-4 shadow-lg border-0 bg-gradient`}
     >
-      <Card.Body  className="p-3 bg-white">
+      <Card.Body className="p-3 bg-white rounded-5">
         <Stack
           gap={2}
           className="align-items-center justify-content-center h-100"
         >
-          <Card.Title className="text-primary fw-bold">{title}</Card.Title>
+          <Card.Title className="fw-bold">{title}</Card.Title>
           {tags.length > 0 && (
             <Stack
               gap={1}
@@ -151,7 +151,7 @@ function NoteCard({ id, title, tags }: SimplifiedNote) {
               className="justify-content-center flex-wrap"
             >
               {tags.map(tag => (
-                <Badge  bg="info" text="white" className="me-2 text-truncate" key={tag.id}>
+                <Badge className="bg-success text-white me-2 text-truncate fs-6 p-2" key={tag.id}>
                   {tag.label}
                 </Badge>
               ))}
