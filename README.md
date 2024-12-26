@@ -6,6 +6,10 @@
 
 ---
 
+Live Link - [Note-keeper](https://vijay13899.github.io/Note-keeper/#/)
+
+---
+
 ## Features
 
 - **Create Notes:** Quickly create notes with a title and body.
@@ -65,6 +69,7 @@ Follow the steps below to set up the project locally:
 
 ## Project Structure
 
+```plaintext
 ├── src
 │   ├── App.tsx          # Main application, handling routes
 │   ├── NoteForm.tsx     # Form for creating and editing notes
@@ -90,19 +95,6 @@ Follow the steps below to set up the project locally:
 
 3. **Search and Filter Notes:**
    - Use the search bar or filter notes by selecting specific tags.
-
----
-
-## Screenshots
-
-### Home Page
-![Home Page](#)
-
-### Create Note
-![Create Note](#)
-
-### Tag Management
-![Tag Management](#)
 
 ---
 
