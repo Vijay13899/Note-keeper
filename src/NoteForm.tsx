@@ -16,12 +16,12 @@ type NoteFormProps = {
 export function NoteForm({
                            onSubmit,
                            onAddTag,
-                           availableTags,
+                           availableTags,markdown="",
                            title = "",
                            tags = [],
                          }: NoteFormProps) {
   const titleRef = useRef<HTMLInputElement>(null)
-  const [markdown,setMarkdown] = useState("");
+  const [NewMarkdown,setNewMarkdown] = useState(markdown);
   const [selectedTags, setSelectedTags] = useState<Tag[]>(tags)
   const navigate = useNavigate()
 
@@ -30,7 +30,7 @@ export function NoteForm({
 
     onSubmit({
       title: titleRef.current!.value,
-      markdown:markdown,
+      markdown:NewMarkdown,
       tags: selectedTags,
     })
 
@@ -97,8 +97,8 @@ export function NoteForm({
                   {/*    className="border-primary"*/}
                   {/*/>*/}
                     <MDEditor
-                        value={markdown}
-                        onChange={(value) => setMarkdown(value as string)}
+                        value={NewMarkdown}
+                        onChange={(value) => setNewMarkdown(value as string)}
                         id="notes"
                         preview="edit"
                         height={300}

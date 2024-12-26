@@ -2,17 +2,15 @@ import { Badge, Button, Card, Col, Row, Stack } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useNote } from "./NoteLayout";
 import ReactMarkdown from "react-markdown";
-import PDFDocument from "./PDFDocument";
-import {PDFDownloadLink} from "@react-pdf/renderer";
 
 type NoteProps = {
   onDelete: (id: string) => void;
 };
 
+
 export function Note({ onDelete }: NoteProps) {
   const note = useNote();
   const navigate = useNavigate();
-
   return (
       <div className="p-4">
         {/* Header Section */}
@@ -39,13 +37,6 @@ export function Note({ onDelete }: NoteProps) {
                   Edit
                 </Button>
               </Link>
-                <PDFDownloadLink
-                    document={<PDFDocument markdown={note.markdown} />}
-                    fileName={`${note.title}.pdf`}
-                    className="btn btn-primary"
-                >
-                    Download as PDF
-                </PDFDownloadLink>
               <Button
                   onClick={() => {
                     onDelete(note.id);
